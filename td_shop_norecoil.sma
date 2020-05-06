@@ -18,7 +18,7 @@ public plugin_init()  {
 	register_forward(FM_PlayerPreThink, "PreThink");
 	register_forward(FM_UpdateClientData, "UpdateClientData", 1)
 	
-	iItem = td_shop_register_item("No recoil", "No recoil for all weapons for 2 waves", 250, 0, id)
+	iItem = td_shop_register_item("No recoil", "Brak rozrzutu przez 2 fale", 250, 0, id)
 }
 
 public td_reset_player_info(iPlayer)
@@ -31,7 +31,7 @@ public td_shop_item_selected(id, itemid) {
 	if(iItem == itemid)
 	{
 		g_iWaveNums[id] += 2;
-		ColorChat(id, GREEN, "[TD]^x01 No recoil now will be enabled for %d waves!", g_iWaveNums[id]);
+		ColorChat(id, GREEN, "[TD]^x01 Brak rozrzutu bedzie aktywny %d fale!", g_iWaveNums[id]);
 		SetOff(id + 54222);
 	}
 
@@ -52,14 +52,14 @@ public SetOff(id)
 	if(g_iWaveNums[id] == 0)
 	{
 		set_hudmessage(200, 255, 0, 0.60, 0.69, 0, 0.1, 4.1, 0.1, 0.1, -1)
-		show_hudmessage(id,"No recoil Ammo time down!")
+		show_hudmessage(id,"Brak rozrzutu wylaczony!")
 
-		ColorChat(id, GREEN, "[TD]^x01 No recoil time down.");
+		ColorChat(id, GREEN, "[TD]^x01 Brak rozrzutu wylaczony!");
 		return;
 	}
 
 	set_hudmessage(200, 255, 0, 0.60, 0.69, 1, 0.1, 1.1, 0.1, 0.1, -1)
-	show_hudmessage(id, "No recoil: %d %s left", g_iWaveNums[id], g_iWaveNums[id] == 1 ? "wave" : "waves")
+	show_hudmessage(id, "Brak rozrzutu: %d %s left", g_iWaveNums[id], g_iWaveNums[id] == 1 ? "fala" : "fale")
 	
 	set_task(1.0, "SetOff", id + 54222);
 }
