@@ -338,7 +338,7 @@ new g_SkillsDesc[MAX_LEVEL][64] =
 	"Brak skilla",
 	"Zadajesz 6 DMG wiecej",
 	"Jestes 10% szybszy",
-	"Dostajesz +1 monete za zabicie",
+	"Dostajesz +1 zlota za zabicie",
 	"Dostajesz + $150 za zabicie",
 	"Dostajesz 1 granat podpalajacy co 2 min.",
 	"Jestes 25% szybszy.",
@@ -975,7 +975,7 @@ public SaveUserConfig(id, iFile)
 		{
 			if(tmpGold > g_ConfigValues[CFG_BANK_LIMIT_VIP])
 			{
-				ColorChat(id, GREEN, "%s^x01 Osiagnales limit monet w banku dla graczy VIP [ %d ]", CHAT_PREFIX, g_ConfigValues[CFG_BANK_LIMIT_VIP]); 
+				ColorChat(id, GREEN, "%s^x01 Osiagnales limit zlota w banku dla graczy VIP [ %d ]", CHAT_PREFIX, g_ConfigValues[CFG_BANK_LIMIT_VIP]); 
 				tmpGold = g_ConfigValues[CFG_BANK_LIMIT_VIP];
 			}
 		}
@@ -986,10 +986,10 @@ public SaveUserConfig(id, iFile)
 		{
 			if(tmpGold > g_ConfigValues[CFG_BANK_LIMIT])
 			{
-				ColorChat(id, GREEN, "%s^x01 Osiagnales limit monet w banku dla graczy bez VIP [ %d ]", CHAT_PREFIX, g_ConfigValues[CFG_BANK_LIMIT]); 
+				ColorChat(id, GREEN, "%s^x01 Osiagnales limit zlota w banku dla graczy bez VIP [ %d ]", CHAT_PREFIX, g_ConfigValues[CFG_BANK_LIMIT]); 
 
 				if(g_ConfigValues[CFG_VIP] && g_ConfigValues[CFG_BANK_LIMIT_VIP])
-					ColorChat(id, GREEN, "%s^x01 Gracze VIP moga zachowac w banku %d monet", CHAT_PREFIX, g_ConfigValues[CFG_BANK_LIMIT_VIP])
+					ColorChat(id, GREEN, "%s^x01 Gracze VIP moga zachowac w banku %d zlota", CHAT_PREFIX, g_ConfigValues[CFG_BANK_LIMIT_VIP])
 
 				tmpGold = g_ConfigValues[CFG_BANK_LIMIT];
 			}
@@ -1269,7 +1269,7 @@ public PlayerSpawned(id)
 				
 				if(iGold)
 				{
-					ColorChat(id, GREEN, "%s^x01 Otrzymales %d monet na lepszy start", CHAT_PREFIX, iGold)	          
+					ColorChat(id, GREEN, "%s^x01 Otrzymales %d zlota na lepszy start", CHAT_PREFIX, iGold)	          
 					g_PlayerInfo[id][PLAYER_GOLD] += iGold
 				}
 				if(iMoney)
@@ -2253,7 +2253,7 @@ public PlayerIsInRepairZone(id)
 	else
 	{
 		set_hudmessage(255, 0, 0, 0.06, 0.70, 1, 1.0, 2.1, 0.2, 0.2, -1)
-		ShowSyncHudMsg(id, g_SyncHudRepair, "Zaczekaj %d %s aby zbudowac [%d / %d] [Koszt naprawy wiezy: %d monet]", playerTime, playerTime == 1 ? "sekunda" : "sekund",  g_PlayerRepairedBlock[id]+1, maxBlocks, cost);
+		ShowSyncHudMsg(id, g_SyncHudRepair, "Zaczekaj %d %s aby zbudowac [%d / %d] [Koszt naprawy wiezy: %d zlota]", playerTime, playerTime == 1 ? "sekunda" : "sekund",  g_PlayerRepairedBlock[id]+1, maxBlocks, cost);
 		
 		g_PlayerTimeInRepairZone[id] --;
 	}
@@ -2668,7 +2668,7 @@ public ShowShopMenu(id, fromMenu)
 	
 	static szFormat[128]
 
-	formatex(szFormat, charsmax(szFormat), "\yPosiadasz \w%d\y monet!^n\rCo chcesz kupic?", g_PlayerInfo[id][PLAYER_GOLD])
+	formatex(szFormat, charsmax(szFormat), "\yPosiadasz \w%d\y zlota!^n\rCo chcesz kupic?", g_PlayerInfo[id][PLAYER_GOLD])
 	
 	new iMenu = menu_create(szFormat, "ShowShopMenuH")
 	new iCb = menu_makecallback("ShowShopMenuCb")
@@ -2725,7 +2725,7 @@ public ShowShopMenuH(id, menu, item)
 	
 	num_to_str(item, szKey, 4);
 	
-	formatex(szTitle, charsmax(szTitle), "\wNazwa: \y%s ^n\wOpis: \y%s ^n\wCena: \y%d\w monet ^nRaz na mape: %s ^n\rKupujesz?",  
+	formatex(szTitle, charsmax(szTitle), "\wNazwa: \y%s ^n\wOpis: \y%s ^n\wCena: \y%d\w zlota ^nRaz na mape: %s ^n\rKupujesz?",  
 	g_ShopItemsName[item], 
 	g_ShopItemsDesc[item],
 	g_ShopItemsPrice[item], 
@@ -2769,7 +2769,7 @@ public PlayerBuyItem(id, iItemIndex)
 		
 	ColorChat(id, GREEN, "%s^x01 Kupiles: %s", CHAT_PREFIX, g_ShopItemsName[iItemIndex])
 	ColorChat(id, GREEN, "%s^x01 Opis: %s", CHAT_PREFIX, g_ShopItemsDesc[iItemIndex])
-	ColorChat(id, GREEN, "%s^x01 Koszt: %d monet", CHAT_PREFIX, g_ShopItemsPrice[iItemIndex])
+	ColorChat(id, GREEN, "%s^x01 Koszt: %d zlota", CHAT_PREFIX, g_ShopItemsPrice[iItemIndex])
 	
 	if(g_ShopOnePerMap[iItemIndex]) 
 		g_ShopPlayerBuy[id][iItemIndex] = 1;
@@ -2889,7 +2889,7 @@ public CmdSwapMoney(id)
  {
 	if(!g_ConfigValues[CFG_SWAP_MONEY])
 	{
-		ColorChat(id, GREEN, "%s^x01 Wymiana kasy na monety jest zablokowana.", CHAT_PREFIX);
+		ColorChat(id, GREEN, "%s^x01 Wymiana kasy na zloto jest zablokowana.", CHAT_PREFIX);
 		return;
 	}
 	new iMoney = cs_get_user_money(id)
@@ -2904,7 +2904,7 @@ public CmdSwapMoney(id)
 	
 	if(g_IsUserNotifiedAboutSwap[id]) 
 	{
-		ColorChat(id, GREEN, "%s^x01 Wymieniles $%d kasy na %d monet!", CHAT_PREFIX, g_ConfigValues[CFG_SWAP_MONEY_MONEY], g_ConfigValues[CFG_SWAP_MONEY_GOLD])
+		ColorChat(id, GREEN, "%s^x01 Wymieniles $%d kasy na %d zlota!", CHAT_PREFIX, g_ConfigValues[CFG_SWAP_MONEY_MONEY], g_ConfigValues[CFG_SWAP_MONEY_GOLD])
 	
 		iMoney -= g_ConfigValues[CFG_SWAP_MONEY_MONEY]
 		
@@ -2937,7 +2937,7 @@ public EventMoney(id)
 				return
 			}
 			ColorChat(id, GREEN, "%s^x01 Masz $%d!", CHAT_PREFIX, g_ConfigValues[CFG_SWAP_MONEY_MONEY])
-			ColorChat(id, GREEN, "%s^x01 Wpisz '/zamien' aby wymienic kase na %d monet!", CHAT_PREFIX, g_ConfigValues[CFG_SWAP_MONEY_GOLD])	
+			ColorChat(id, GREEN, "%s^x01 Wpisz '/zamien' aby wymienic kase na %d zloto!", CHAT_PREFIX, g_ConfigValues[CFG_SWAP_MONEY_GOLD])	
 		} 
 		else if(iMoney < g_ConfigValues[CFG_SWAP_MONEY]) 
 			g_IsUserNotifiedAboutSwap[id] = 0
@@ -2961,7 +2961,7 @@ public CmdPlayerMenu(id)
 	menu_additem(iMenu, "Sklep", "2", _, iCb)
 	if(g_isGunModEnabled)
 		menu_additem(iMenu, "Bronie", "3", _, iCb);
-	menu_additem(iMenu, "Daj monety", "4", _, iCb)
+	menu_additem(iMenu, "Daj zloto", "4", _, iCb)
 	menu_additem(iMenu, "Menu gracza", "5");
 	menu_additem(iMenu, "Menu admina", "6", ADMIN_CVAR);
 
@@ -3062,7 +3062,7 @@ public ShowPlayerOptionsMenu(id)
 	menu_additem(iMenu, "Opcje paska zdrowia", _, _, iCb);
 	menu_additem(iMenu, "Opcje wiezyczek", _, _, iCb);
 	
-	formatex(szFormat, charsmax(szFormat), "Automatyczna zamiana kasy %s^n\w[\y %d monet\w kiedy masz \y $%d\w ]", g_PlayerSwapMoneyAutobuy[id] ? "\yjest Wl":"\rjest WYL",  g_ConfigValues[CFG_SWAP_MONEY_GOLD], g_ConfigValues[CFG_SWAP_MONEY_MONEY]);	
+	formatex(szFormat, charsmax(szFormat), "Automatyczna zamiana kasy %s^n\w[\y %d zlota\w kiedy masz \y $%d\w ]", g_PlayerSwapMoneyAutobuy[id] ? "\yjest Wl":"\rjest WYL",  g_ConfigValues[CFG_SWAP_MONEY_GOLD], g_ConfigValues[CFG_SWAP_MONEY_MONEY]);	
 	menu_additem(iMenu, szFormat, _, _, iCb);
 	
 	menu_setprop(iMenu, MPROP_EXITNAME, "Back");
@@ -5692,7 +5692,7 @@ public DisplayWaveInfo(id, iWave)
 		RoundType == ROUND_BONUS	? "BONUS":
 		RoundType == ROUND_BOSS 	? "BOSS": "ERROR"),
 		iMonsterNum, 
-		iMonsterNum == 1		? "monster" : "monsters")
+		iMonsterNum == 1		? "POTWOR" : "POTWORY")
 	
 	new iPlayers = GetAlivePlayers();
 	new bool:isMinPlayers = ( iPlayers >= g_ConfigValues[CFG_WAVE_MLTP_MIN_PLAYERS] )

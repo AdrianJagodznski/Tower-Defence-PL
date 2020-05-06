@@ -26,7 +26,7 @@ public plugin_init() {
 
 public Menu(id)
 {
-	/* Jeli jest to admin, to daj mu prawo otwarcia menu */
+
 	if((get_user_flags(id) & ADMIN_CVAR))
 		goto toMenu
 	
@@ -42,7 +42,7 @@ public Menu(id)
 		return
 	}
 	toMenu:
-	/* Jeli ma prawo do otwarcia, pokaz liste graczy*/
+
 	new menu = menu_create("", "MenuH")
 	
 	new szName[33]
@@ -65,7 +65,7 @@ public Menu(id)
 
 public MenuH(id, menu, item)
 {
-	/* Jeli wybra³ gracza, to wybierz ile masz da株/
+
 	if(item == MENU_EXIT || !is_user_alive(id)) {
 		menu_destroy(menu)
 		return
@@ -266,8 +266,7 @@ ChangeGold(this, target, ammount, admin = 0)
 	if(admin)
 		ColorChat(target,  GREEN, "%s^x01 Otrzymales od admina '%s' %d zlota", CHAT_PREFIX, szAdminName, ammount)
 	else
-		ColorChat(0,  GREEN, "%s^x01 Gracz '%s' wyslal Ci '%s' %d zlota!", CHAT_PREFIX, szAdminName, szName, ammount)
+		ColorChat(0,  GREEN, "%s^x01 Gracz '%s' wyslal '%s' %d zlota!", CHAT_PREFIX, szAdminName, szName, ammount)
 
 	iPlayerTarget[this] = 0;
 }
-	

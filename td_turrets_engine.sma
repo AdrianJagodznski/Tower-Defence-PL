@@ -1493,7 +1493,7 @@ public TurretThink(iTurretEntity)
 		
 		emit_sound(iTurretEntity, CHAN_AUTO, g_SoundFile[SOUND_TURRET_NOAMMO], 1.0, 0.7, 0, PITCH_NORM);
 		
-		ColorChat(iPlayer, GREEN, "%s^x01 Your '%s' turret is empty!", CHAT_PREFIX, szTurretName)
+		ColorChat(iPlayer, GREEN, "%s^x01 Twoja wiezyczka'%s' nie ma amunicji!", CHAT_PREFIX, szTurretName)
 		client_cmd(iPlayer, "spk sound/%s", g_SoundFile[SOUND_TURRET_NOAMMO]);
 		
 		/* Set -1 ammo because this message can be showed only one time */
