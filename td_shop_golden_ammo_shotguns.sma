@@ -37,7 +37,7 @@ public info(id) {
 			client_print(id, print_chat, "[ZLOTE NABOJE] Gotowe do uzycia!");
 
 		if(g_PlayerAmmo[id])
-			client_print(id, print_chat, "[ZLOTE NABOJE] Posiadasz %d zlotych naboi!", g_PlayerAmmo[id]);
+			client_print(id, print_chat, "[ZLOTE NABOJE] Posiadasz %d zlotych naboi do strzelb!", g_PlayerAmmo[id]);
 
 	}
 }
