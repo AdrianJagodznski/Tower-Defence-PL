@@ -14,7 +14,7 @@ public plugin_init()
 {
 	new id = register_plugin(PLUGIN, VERSION, AUTHOR)
 	
-	iItem = td_shop_register_item("Multi damage na 1 fale", "Zawsze trafiasz HS i krytyki przez 1 fale", 300, 0, id)
+	iItem = td_shop_register_item("MEGA DMG", "Zadajesz tylko obrazenia HS i Krytyczne", 300, 0, id)
 }
 
 public td_reset_player_info(iPlayer)
@@ -29,7 +29,7 @@ public td_shop_item_selected(id, itemid)
 	{
 		g_iWaveNums[id] += 1;
 		
-		ColorChat(id, GREEN, "[TD]^x01 Multi damage zostal odblokowany na %d fale!", g_iWaveNums[id]);
+		ColorChat(id, GREEN, "[TD]^x01 MEGA DMG bedzie aktywne przez %d fal!", g_iWaveNums[id]);
 		
 		SetOff(id + 54155);
 	}
@@ -48,13 +48,13 @@ public SetOff(id)
 	if(g_iWaveNums[id] == 0)
 	{
 		set_hudmessage(200, 255, 0, 0.60, 0.69, 0, 0.1, 4.0, 0.1, 0.1, -1)
-		show_hudmessage(id,"Multi damage zakonczony!")
+		show_hudmessage(id,"MEGA DMG wylaczone!")
 
-		ColorChat(id, GREEN, "[TD]^x01 3x zakonczony.");
+		ColorChat(id, GREEN, "[TD]^x01 MEGA DMG wylaczone!");
 		return;
 	}
 	set_hudmessage(200, 255, 0, 0.60, 0.60, 1, 0.1, 1.1, 0.1, 0.1, -1)
-	show_hudmessage(id,"Multi damage: %d %s zostalo", g_iWaveNums[id], g_iWaveNums[id] == 1 ? "fala" : "fale")
+	show_hudmessage(id,"MEGA DMG: %d %s pozostalo", g_iWaveNums[id], g_iWaveNums[id] == 1 ? "fala" : "fal")
 	
 	set_task(1.0, "SetOff", id + 54155);
 }	
