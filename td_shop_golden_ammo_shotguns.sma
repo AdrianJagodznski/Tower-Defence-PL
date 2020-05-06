@@ -98,7 +98,7 @@ public TraceAttack(iEnt, iAttacker, Float:flDamage, Float:fDir[3], ptr, iDamageT
 	write_byte(10)		// speed
 	message_end()
 	
-	client_print(iAttacker, print_center, "Zlote naboje do strzelby: %d", g_PlayerAmmo[iAttacker])
+	client_print(iAttacker, print_center, "Zlote naboje - STRZELBA: %d", g_PlayerAmmo[iAttacker])
 	
 	if(td_is_monster(iEnt))
 		SetHamParamFloat(3, flDamage*1.5);
