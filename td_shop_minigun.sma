@@ -106,7 +106,7 @@ public plugin_init() {
 	register_event("HLTV", "event_start_freezetime", "a", "1=0", "2=0")
 	unregister_forward(FM_PrecacheEvent, g_fwid, 1)
 	
-	iItem = td_shop_register_item("Minigun", "You get minigun!", 650, 1, id)
+	iItem = td_shop_register_item("Minigun", "Dostajesz Miniguna!", 650, 1, id)
 }
 public plugin_natives() {
 	
